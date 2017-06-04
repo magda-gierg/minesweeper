@@ -4,8 +4,14 @@ document.addEventListener('DOMContentLoaded', startGame)
  var board = {cells:[
    {row:0, col:0, isMine:"", hidden:true},
    {row:0, col:1, isMine:"", hidden:true},
+   {row:0, col:2, isMine:"", hidden:true},
    {row:1, col:0, isMine:"", hidden:true},
-   {row:1, col:1, isMine:"", hidden:true}]};
+   {row:1, col:1, isMine:"", hidden:true},
+   {row:1, col:2, isMine:"", hidden:true},
+   {row:2, col:0, isMine:"", hidden:true},
+   {row:2, col:1, isMine:"", hidden:true},
+   {row:2, col:2, isMine:"", hidden:true}
+ ]};
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
