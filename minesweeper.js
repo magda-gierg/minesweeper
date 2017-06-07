@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
-var board = {cells:[
+/*var board = {cells:[
   {row:0, col:0, isMine:true, isMarked:false, hidden:true, surroundingMines: 0},
   {row:0, col:1, isMine:false, isMarked:false, hidden:true, surroundingMines: 0},
   {row:0, col:2, isMine:true, isMarked:false, hidden:true, surroundingMines: 0},
@@ -11,7 +11,9 @@ var board = {cells:[
   {row:2, col:0, isMine:true, isMarked:false, hidden:true, surroundingMines: 0},
   {row:2, col:1, isMine:false, isMarked:false, hidden:true, surroundingMines: 0},
   {row:2, col:2, isMine:false, isMarked:false, hidden:true, surroundingMines: 0}
-]};
+]};*/
+var board = createBoard (3);
+
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
@@ -67,4 +69,15 @@ function countSurroundingMines (cell) {
     }
   }
   return count;
+}
+
+function createBoard (size) {
+var board = {cells:[]};
+for (x=0; x< size; x++) {
+  for (y=0; y< size; y++) {
+    var random_boolean = Math.random() >= 0.5;
+    board.cells.push({row:x, col:y, isMine:random_boolean, isMarked:false, hidden:true})
+  }
+}
+  return board;
 }
