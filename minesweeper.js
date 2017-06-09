@@ -12,21 +12,23 @@ document.addEventListener('DOMContentLoaded', startGame)
   {row:2, col:1, isMine:false, isMarked:false, hidden:true, surroundingMines: 0},
   {row:2, col:2, isMine:false, isMarked:false, hidden:true, surroundingMines: 0}
 ]};*/
-var board = createBoard (3);
-
-
+//var board = createBoard(3);
 function startGame () {
+  document.getElementById("board").innerHTML="";//Clean the board
+  var boardSize = document.getElementById("mySelect").value;//Set the board size
+   board = createBoard(boardSize);
+  for (i=0; i< board.cells.length; i++) {
+    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
+  }
+  document.getElementById('myBtn').addEventListener('click', startGame)
+  document.getElementById('board').addEventListener('click', checkForWin);
+  document.getElementById('board').addEventListener('contextmenu', checkForWin);
   // Don't remove this function call: it makes the game work!
 
-  document.getElementsByClassName('board')[0].addEventListener('click', checkForWin);
-  document.getElementsByClassName('board')[0].addEventListener('contextmenu', checkForWin);
   lib.initBoard()
-
 }
 
-for (i=0; i< board.cells.length; i++) {
-  board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
-}
+
 // Define this function to look for a win condition:
 //
 // 1. Are all of the cells that are NOT mines visible?
@@ -75,7 +77,7 @@ function createBoard (size) {
 var board = {cells:[]};
 for (x=0; x< size; x++) {
   for (y=0; y< size; y++) {
-    var random_boolean = Math.random() >= 0.5;
+    var random_boolean = Math.random() >= 0.7;
     board.cells.push({row:x, col:y, isMine:random_boolean, isMarked:false, hidden:true})
   }
 }
